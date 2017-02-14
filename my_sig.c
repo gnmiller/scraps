@@ -4,23 +4,26 @@
 #include <unistd.h>
 
 // headers
-void catch_tstp(int);
+void catch();
 
-// global flag
+// global flags
 int global;
+int allow;
 
 int main()
 {
+    // set up globals
+    allow = 0;
+    global = 0;
 
-    if(signal(SIGTSTP,catch_tstp) == SIG_ERR)
+    // install signal handlers
+    if(signal(SIGTSTP,catch) == SIG_ERR || signal(SIGUSR1,catch) == SIG_ERR)
     {
         fprintf(stderr,"failed to install sig handler...\n");
         exit(1);
     }
 
-    global = 0;
-    int i;
-    i = 0;
+    // useless loop
     for(;;)
     {
         if(global){
@@ -32,11 +35,21 @@ int main()
     }
 }
 
-void catch_tstp(int sig)
+/** catch SIGTSTP and SIGUSR1 
+ * SIGTSTP alters global flag to change output
+ * SIGUSR1 allows or denys the use of SIGTSTP
+ */
+void catch(int sig)
 {
     if(sig==SIGTSTP)
     {
-        if(global) global=0;
-        else global=1;
+        if(allow){
+            if(global) global=0;
+            else global=1;
+        }
+    }
+    if(sig==SIGUSR1){
+        allow=!allow;
     }
 }
+
