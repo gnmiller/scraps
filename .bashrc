@@ -27,5 +27,5 @@ prompt="$prompt\[$clear\]"
 export PS1="[$userhost][$curtime][$workdir]\n$prompt "
 
 #aliases
-alias la='ls -lah'
+alias la='ls -lah --color=auto'
 alias kalecgos='ssh root@redacted'
