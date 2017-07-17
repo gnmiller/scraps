@@ -7,7 +7,11 @@ set tabstop=4
 set shiftwidth=4
 set showmatch
 set nohls
+set showcmd
+set wildmenu
+set confirm
+set cmdheight=2
 set wrap
 syntax on
 
-colo elflord " elflord master color scheme
+colo elflord
