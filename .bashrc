@@ -24,7 +24,10 @@ fi
 prompt=$prompt'\$'
 prompt="$prompt\[$clear\]"
 
+#env vars
 export PS1="[$userhost][$curtime][$workdir]\n$prompt "
+export VISUAL=vim
+export EDITOR="$VISUAL"
 
 #aliases
 alias la='ls -lah --color=auto'
