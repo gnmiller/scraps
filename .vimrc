@@ -12,6 +12,7 @@ set wildmenu
 set confirm
 set cmdheight=2
 set wrap
+set ruler
 syntax on
 
 colo elflord
