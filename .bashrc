@@ -33,3 +33,8 @@ export EDITOR="$VISUAL"
 alias la='ls -lah --color=auto'
 alias mkpasswd='mkpasswd -l 16 -c 4 -C 4 -d 4 -s 0'
 alias kalecgos='ssh root@redacted'
+alias isitup='/usr/local/bin/python3 /usr/local/bin/isitup'
+alias untar='tar xvf'
+alias guntar='tar zxvf'
+alias ds='du -ch --max-depth=1 | sort -h'
+alias lart='ls -lahrt'
